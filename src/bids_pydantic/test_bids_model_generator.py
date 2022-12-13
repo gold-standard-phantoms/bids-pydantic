@@ -25,25 +25,33 @@ def test_api_response() -> None:
         {
             "ref": "refs/tags/v1.1.2",
             "node_id": "MDM6UmVmMTUwNDY1MjM3OnJlZnMvdGFncy92MS4xLjI=",
-            "url": "https://api.github.com/repos/bids-standard/"
-            "bids-specification/git/refs/tags/v1.1.2",
+            "url": (
+                "https://api.github.com/repos/bids-standard/"
+                "bids-specification/git/refs/tags/v1.1.2"
+            ),
             "object": {
                 "sha": "2e49d8e6f37f343d46cb28120794011c89def5cf",
                 "type": "tag",
-                "url": "https://api.github.com/repos/bids-standard/"
-                "bids-specification/git/tags/2e49d8e6f37f343d46cb28120794011c89def5cf",
+                "url": (
+                    "https://api.github.com/repos/bids-standard/"
+                    "bids-specification/git/tags/2e49d8e6f37f343d46cb28120794011c89def5cf"
+                ),
             },
         },
         {
             "ref": "refs/tags/v99.88.77",
             "node_id": "MDM6UmVmMTUwNDY1MjM3OnJlZnMvdGFncy92MS4yLjA=",
-            "url": "https://api.github.com/repos/bids-standard/"
-            "bids-specification/git/refs/tags/v99.88.77",
+            "url": (
+                "https://api.github.com/repos/bids-standard/"
+                "bids-specification/git/refs/tags/v99.88.77"
+            ),
             "object": {
                 "sha": "584a8e256eff0069ecfb72f29b392e9c64b14f89",
                 "type": "tag",
-                "url": "https://api.github.com/repos/bids-standard/"
-                "bids-specification/git/tags/584a8e256eff0069ecfb72f29b392e9c64b14f89",
+                "url": (
+                    "https://api.github.com/repos/bids-standard/"
+                    "bids-specification/git/tags/584a8e256eff0069ecfb72f29b392e9c64b14f89"
+                ),
             },
         },
     ]

@@ -1,10 +1,10 @@
-"""Setup for BIDS-pydantic"""
+"""Setup for BIDS-pydantic-models"""
 import os
 import re
 
 from setuptools import find_packages, setup
 
-with open(os.path.join("requirements", "base.txt"), encoding="utf-8") as f:
+with open("requirements.txt", encoding="utf-8") as f:
     requirements = f.read().splitlines()
 
 with open("README.md", encoding="utf-8") as fh:
@@ -75,11 +75,11 @@ def get_version(rel_path: str) -> str:
 
 
 setup(
-    name="BIDS-pydantic",
-    version=get_version("src/bids_pydantic/__init__.py"),
+    name="BIDS-pydantic-models",
+    version=get_version("../src/bids_pydantic/__init__.py"),
     author="Gold Standard Phantoms",
     author_email="tom.hampshire@goldstandardphantoms.com",
-    description="Pydantic model generator for BIDS metadata",
+    description="Pydantic models for BIDS metadata",
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
@@ -104,9 +104,4 @@ setup(
     python_requires=">=3.9",
     install_requires=requirements,
     include_package_data=True,
-    entry_points={
-        "console_scripts": [
-            "bids-pydantic = bids_pydantic.cli:main",
-        ],
-    },
 )

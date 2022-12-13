@@ -7,14 +7,14 @@ which is used in the JSON BIDS sidecar, from the [official BIDS GitHub page](htt
 and create corresponding [pydantic](https://pydantic-docs.helpmanual.io/) models, which will provide BIDS data validation using
 python type annotations.
 
-
 ## Table of Contents
-* [Quickstart](#quickstart)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Development](#development)
-* [Acknowledgements](#acknowledgements)
-* [License](#license)
+
+- [Quickstart](#quickstart)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ## How To Contribute
 
@@ -42,14 +42,14 @@ way please see [https://docs.python.org/3/installing/index.html](https://docs.py
 
 ### Python Version
 
-We recommend using the latest version of Python. BIDS-pydantic supports Python 3.8 and newer.
+We recommend using the latest version of Python. BIDS-pydantic supports Python 3.9 and newer.
 
 ### Dependencies
 
 These distributions will be installed automatically when installing BIDS-pydantic.
 
-* [pydantic](https://pydantic-docs.helpmanual.io/)
-* [datamodel-code-generator](https://github.com/koxudaxi/datamodel-code-generator)
+- [pydantic](https://pydantic-docs.helpmanual.io/)
+- [datamodel-code-generator](https://github.com/koxudaxi/datamodel-code-generator)
 
 ## Usage
 
@@ -78,7 +78,6 @@ Queries the GitHub API and lists the available supported BIDS schema versions. O
 optional arguments:
   -h, --help  show this help message and exit
 ```
-
 
 The `make` command help can be viewed with the command `bids-pydantic make -h`:
 
@@ -112,25 +111,23 @@ Development dependencies should be installed using `pip install -r requirements/
 
 Development should be carried out using Python 3.8. Development must comply with a few code styling/quality rules and processes:
 
-* Before pushing any code, make sure the `CHANGELOG.md` is updated as per the instructions in the `CHANGELOG.md` file. tox should also be run to ensure that tests and code-quality checks pass.
-* The README.md file should be updated with any usage or development instructions.
-* Ensure that a good level of test coverage is kept. The test reports will be committed to the CI system when testing is run, and these will be made available during code review. If you wish to view test coverage locally, run `coverage report`.
-* To ensure these code quality rules are kept to, [pre-commit](https://pre-commit.com/) should be installed (see the `requirements/dev.txt`), and `pre-commit install` run when first cloning this repo. This will install some pre-commit hooks that will ensure any committed code meets the minimum code-quality and is formatted correctly *before* being committed to Git. This will ensure that tests will pass on CI system after code is pushed. The tools should also be included in any IDEs/editors used, where possible. To run manually, run `precommit run --all-files`. The following software tools will be run:
+- Before pushing any code, make sure the `CHANGELOG.md` is updated as per the instructions in the `CHANGELOG.md` file. tox should also be run to ensure that tests and code-quality checks pass.
+- The README.md file should be updated with any usage or development instructions.
+- Ensure that a good level of test coverage is kept. The test reports will be committed to the CI system when testing is run, and these will be made available during code review. If you wish to view test coverage locally, run `coverage report`.
+- To ensure these code quality rules are kept to, [pre-commit](https://pre-commit.com/) should be installed (see the `requirements/dev.txt`), and `pre-commit install` run when first cloning this repo. This will install some pre-commit hooks that will ensure any committed code meets the minimum code-quality and is formatted correctly _before_ being committed to Git. This will ensure that tests will pass on CI system after code is pushed. The tools should also be included in any IDEs/editors used, where possible. To run manually, run `precommit run --all-files`. The following software tools will be run:
 
-  * [mypy](https://github.com/python/mypy)
-  * [pylint](https://pylint.org/)
-  * [black](https://black.readthedocs.io/en/stable/)
-  * [isort](https://isort.readthedocs.io/en/latest/)
-  * [pyupgrade](https://github.com/asottile/pyupgrade)
-
+  - [mypy](https://github.com/python/mypy)
+  - [pylint](https://pylint.org/)
+  - [black](https://black.readthedocs.io/en/stable/)
+  - [isort](https://isort.readthedocs.io/en/latest/)
+  - [pyupgrade](https://github.com/asottile/pyupgrade)
 
 ## Acknowledgements
 
 Conversion from schema to pydantic models is carried out using [datamodel-code-generator](https://github.com/koxudaxi/datamodel-code-generator).
 Data validation is performed using [pydantic](https://pydantic-docs.helpmanual.io/).
 
-
 ## License
 
->You can check out the full license [here](LICENSE)
-This project is licensed under the terms of the **MIT** license.
+> You can check out the full license [here](LICENSE)
+> This project is licensed under the terms of the **MIT** license.

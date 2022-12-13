@@ -10,7 +10,7 @@ import re
 import urllib.request
 from os import PathLike
 from tempfile import TemporaryDirectory
-from typing import Any, Final, List, Optional, Union
+from typing import Any, Final, Optional, Union
 
 from datamodel_code_generator.__main__ import main as code_generator_main
 from datamodel_code_generator.version import version as datamodel_code_generator_version
@@ -46,7 +46,7 @@ class Ref(BaseModel):
 class ApiResponse(BaseModel):
     """A direct response from the :py:const:`API_URL`"""
 
-    response: List[Ref] = Field(...)
+    response: list[Ref] = Field(...)
 
     @staticmethod
     def load_from_api() -> ApiResponse:
@@ -54,7 +54,7 @@ class ApiResponse(BaseModel):
         with urllib.request.urlopen(API_URL) as file_obj:
             return ApiResponse(response=json.loads(file_obj.read().decode("utf-8")))
 
-    def get_versions(self) -> List[Semver]:
+    def get_versions(self) -> list[Semver]:
         """List the (sorted) BIDS versions"""
         return sorted(
             version
@@ -62,7 +62,7 @@ class ApiResponse(BaseModel):
             if version is not None
         )
 
-    def get_supported_versions(self) -> List[Semver]:
+    def get_supported_versions(self) -> list[Semver]:
         """List the (sorted) supported BIDS versions.
         See :py:func:`is_supported_version` for more information"""
         return [
@@ -207,6 +207,6 @@ def create_models(params: ConvertParams) -> None:
                     f"# from {params.schema_version_or_path.get_schema_url()}\n"
                 )
             modified.write(
-                "# Uses datamodel-code-generator "
-                f"v{datamodel_code_generator_version}\n" + data
+                f"# Uses datamodel-code-generator v{datamodel_code_generator_version}\n"
+                + data
             )

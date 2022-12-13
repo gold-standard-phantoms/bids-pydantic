@@ -1,12 +1,10 @@
 """Classes and variables used for versioning/version information"""
 import re
 from functools import total_ordering
-from typing import Any, Final, Generic, Optional, Type, TypeVar
+from typing import Any, Final, Generic, Optional, TypeVar
 
 from pydantic import Field, NonNegativeInt
 from pydantic.generics import GenericModel
-
-from bids_pydantic import __version__
 
 # A bound Semver type for generics
 SemverType = TypeVar("SemverType", bound="Semver")
@@ -26,7 +24,7 @@ class Semver(GenericModel, Generic[SemverType]):
     """The patch version number"""
 
     @classmethod
-    def from_string(cls: Type[SemverType], semver_str: str) -> Optional[SemverType]:
+    def from_string(cls: type[SemverType], semver_str: str) -> Optional[SemverType]:
         """Converts from the following string formats:
         X.Y.Z
         vX.Y.Z

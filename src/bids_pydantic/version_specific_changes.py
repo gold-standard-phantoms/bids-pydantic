@@ -1,6 +1,6 @@
 """Makes changes to BIDS schema yaml file based on the version (if necessary)"""
 
-from typing import Callable, Dict
+from typing import Callable
 
 from bids_pydantic.version_info import SchemaVersion
 
@@ -17,7 +17,7 @@ def patch_v1_7_0(input_str: str) -> str:
     )
 
 
-SCHEMA_FUNCS: Dict[SchemaVersion, Callable[[str], str]] = {
+SCHEMA_FUNCS: dict[SchemaVersion, Callable[[str], str]] = {
     SchemaVersion(major=1, minor=7, patch=0): patch_v1_7_0
 }
 

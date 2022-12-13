@@ -1,3 +1,6 @@
+models/src/bids_pydantic_models/**
+!models/src/bids_pydantic_models/__init__.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -8,7 +8,6 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import Final, Union
 
-from bids_pydantic import __version__
 from bids_pydantic.bids_model_generator import (
     ApiResponse,
     ConvertParams,
@@ -84,7 +83,7 @@ def make_commands(args: argparse.Namespace) -> None:
     # If we should output all possible versions of the schema
     if args.output_all is not None:
         logging.info(
-            "Outputting all parsable versions of the" "BIDS schema as a pydantic model"
+            "Outputting all parsable versions of theBIDS schema as a pydantic model"
         )
         for supported_version in supported_versions:
 
@@ -148,17 +147,21 @@ def main() -> None:
     make_parser.add_argument(
         "--output",
         "-o",
-        help="The output python filename to create (will output to stdout "
-        "console if not specified).",
+        help=(
+            "The output python filename to create (will output to stdout "
+            "console if not specified)."
+        ),
         type=str,
     )
 
     make_parser.add_argument(
         "--output-all",
         "-a",
-        help="Find all parsable schemas and output each to the provided directory. "
-        "Will create filenames such as bids_schema_model_v_1_7_0.py, etc. "
-        "Will overwrite any files in that directory with the same name.",
+        help=(
+            "Find all parsable schemas and output each to the provided directory. "
+            "Will create filenames such as bids_schema_model_v_1_7_0.py, etc. "
+            "Will overwrite any files in that directory with the same name."
+        ),
         type=str,
     )
     make_parser.add_argument(
@@ -172,8 +175,10 @@ def main() -> None:
     make_parser.add_argument(
         "--input",
         "-i",
-        help="Specify an input BIDS metadata (yml) file to use instead of downloading "
-        "a version from GitHub. Cannot be used with --schema-version or --output-all",
+        help=(
+            "Specify an input BIDS metadata (yml) file to use instead of downloading a"
+            " version from GitHub. Cannot be used with --schema-version or --output-all"
+        ),
         type=str,
     )
 
