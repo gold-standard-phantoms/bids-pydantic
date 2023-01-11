@@ -91,8 +91,11 @@ setup(
             "https://github.com/gold-standard-phantoms/bids-pydantic/issues"
         ),
     },
-    packages=find_packages(where="src"),
     package_dir={"": "src"},
+    packages=["bids_pydantic_models"],
+    package_data={
+        "bids_pydantic_models": ["py.typed"],
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Science/Research",

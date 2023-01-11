@@ -1,5 +1,6 @@
 models/src/bids_pydantic_models/**
 !models/src/bids_pydantic_models/__init__.py
+!models/src/bids_pydantic_models/py.typed
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
