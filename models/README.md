@@ -59,7 +59,21 @@ Just import the model you want to use:
 from bids_pydantic_models.bids_metadata_v1_7_0 import BidsMetadata
 ```
 
-then use the class as you would with any other pydantic model. Currently supported
+then use the class as you would with any other pydantic model. For example:
+```python
+bids_metadata = BidsMetadata(
+    EchoTime=5.0, BolusCutOffFlag=True
+)
+bids_metadata.LabelingDuration=1.0
+
+with open("bids_metadata.json", "w") as f:
+    f.write(bids_metadata.json(indent=4, exclude_unset=True))
+```
+
+For more information, reference the
+[pydantic documentation](https://pydantic-docs.helpmanual.io/)
+
+Currently supported
 schema versions are:
 
 - v1.7.0

@@ -78,6 +78,10 @@ class SchemaVersion(Semver["SchemaVersion"]):
             "src/schema/objects/metadata.yaml"
         )
 
+    @classmethod
+    def from_string(cls, semver_str: str) -> Optional["SchemaVersion"]:
+        return super().from_string(semver_str)
+
 
 # Do not support below this version
 MIN_SUPPORTED_SCHEMA_VERSION: Final[SchemaVersion] = SchemaVersion(
@@ -90,7 +94,7 @@ MAX_TESTED_SCHEMA_VERSION: Final[SchemaVersion] = SchemaVersion(
 )
 
 
-def is_supported_version(version: Semver) -> bool:
+def is_supported_version(version: SchemaVersion) -> bool:
     """Determine if the version of the BIDS specification is supported.
     Currently, we assume that v1.7.0 and up is going to be supported, but this may
     need revising in the future"""

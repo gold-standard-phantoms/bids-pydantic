@@ -24,9 +24,9 @@ from bids_pydantic.schema_parsing import (
 from bids_pydantic.version_info import SchemaVersion, Semver, is_supported_version
 
 # The bids-specification repo tags information API endpoint
-API_URL: Final[
-    str
-] = "https://api.github.com/repos/bids-standard/bids-specification/git/refs/tags"
+API_URL: Final[str] = (
+    "https://api.github.com/repos/bids-standard/bids-specification/git/refs/tags"
+)
 
 
 class Ref(BaseModel):
@@ -34,13 +34,13 @@ class Ref(BaseModel):
 
     ref: str = Field(...)
 
-    def get_version(self) -> Optional[Semver]:
+    def get_version(self) -> Optional[SchemaVersion]:
         """Get a Semver with the version information. Returns None if
         the version information cannot be parsed."""
         result = re.search(r"^refs/tags/(.*)$", self.ref)
         if result is None:
             return None
-        return Semver.from_string(result.groups()[0])
+        return SchemaVersion.from_string(result.groups()[0])
 
 
 class ApiResponse(BaseModel):
@@ -54,7 +54,7 @@ class ApiResponse(BaseModel):
         with urllib.request.urlopen(API_URL) as file_obj:
             return ApiResponse(response=json.loads(file_obj.read().decode("utf-8")))
 
-    def get_versions(self) -> list[Semver]:
+    def get_versions(self) -> list[SchemaVersion]:
         """List the (sorted) BIDS versions"""
         return sorted(
             version
@@ -62,7 +62,7 @@ class ApiResponse(BaseModel):
             if version is not None
         )
 
-    def get_supported_versions(self) -> list[Semver]:
+    def get_supported_versions(self) -> list[SchemaVersion]:
         """List the (sorted) supported BIDS versions.
         See :py:func:`is_supported_version` for more information"""
         return [
@@ -95,13 +95,13 @@ class ConvertParams(BaseModel):
     """Parameters for making BIDS-compliant pydantic models given a BIDS schema
     version number"""
 
-    schema_version_or_path: Union[SchemaVersion, PathLike]
+    schema_version_or_path: Union[Semver, PathLike]
     """The schema to use. Either a version number or a file to the schema."""
 
     @validator("schema_version_or_path")
-    def if_file_must_exist(cls, value: Any) -> Union[SchemaVersion, PathLike]:
+    def if_file_must_exist(cls, value: Any) -> Union[Semver, PathLike]:
         """Check we have a schema or is an existing file"""
-        if isinstance(value, SchemaVersion):
+        if isinstance(value, Semver):
             return value
         if isinstance(value, PathLike):
             # The file must exist and be a file
@@ -144,6 +144,10 @@ def create_models(params: ConvertParams) -> None:
             params.schema_version_or_path.get_schema_url()
         ) as file_obj:
             yaml_str = file_obj.read().decode("utf-8")
+    elif isinstance(params.schema_version_or_path, Semver):
+        raise TypeError(
+            "schema_version_or_path must be a SchemaVersion or a path to a schema file"
+        )
     else:
         logging.info("Opening BIDS schema from %s", params.schema_version_or_path)
         with open(params.schema_version_or_path, encoding="utf-8") as file_obj:
@@ -154,9 +158,11 @@ def create_models(params: ConvertParams) -> None:
     # Prepare the yaml data for conversion - apply any version-specific adjustments
     yaml_str = prepare_yaml_metadata_text(
         yaml_str=yaml_str,
-        version=params.schema_version_or_path
-        if isinstance(params.schema_version_or_path, SchemaVersion)
-        else None,
+        version=(
+            params.schema_version_or_path
+            if isinstance(params.schema_version_or_path, SchemaVersion)
+            else None
+        ),
     )
     if yaml_str is None:
         raise ValueError("Input YAML could not be successfully parsed")

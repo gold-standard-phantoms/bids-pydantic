@@ -55,7 +55,7 @@ def test_api_response() -> None:
             },
         },
     ]
-    parsed = ApiResponse(response=response)
+    parsed = ApiResponse(response=response)  # type: ignore
     assert len(parsed.response)
     assert parsed.response[0].get_version() == Semver(major=1, minor=1, patch=2)
     assert parsed.response[1].get_version() == Semver(major=99, minor=88, patch=77)
@@ -74,7 +74,7 @@ def test_get_supported_version() -> None:
         {"ref": "refs/tags/v1.7.0"},  # supported
         {"ref": "refs/tags/v0.1.4"},  # unsupported
     ]
-    parsed = ApiResponse(response=response)
+    parsed = ApiResponse(response=response)  # type: ignore
     assert parsed.get_supported_versions() == [
         Semver(major=1, minor=7, patch=0),
         Semver(major=1, minor=7, patch=1),

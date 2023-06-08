@@ -51,14 +51,9 @@ deploy_development_models:
 deploy_production:
   stage: deploy
   variables:
-    # Set to use GSPs private pypi index
-    # To change to https://pypi.org/:
-    # - remove the TWINE_REPOSITORY_URL
-    # - change TWINE_USERNAME to __token__ (double underscores)
-    # - change TWINE_PASSWORD to the pypi API token
-    TWINE_USERNAME: "${PRIVATE_PYPI_USERNAME}"
-    TWINE_REPOSITORY_URL: "${PRIVATE_PYPI_URL}"
-    TWINE_PASSWORD: "${PRIVATE_PYPI_PASSWORD}"
+    # Set to use https://pypi.org/
+    TWINE_USERNAME: "__token__"
+    TWINE_PASSWORD: "${PYPI_API_TOKEN}"
   script:
     - python -m pip install -U twine
     - python setup.py sdist bdist_wheel
@@ -69,14 +64,9 @@ deploy_production:
 deploy_production_models:
   stage: deploy
   variables:
-    # Set to use GSPs private pypi index
-    # To change to https://pypi.org/:
-    # - remove the TWINE_REPOSITORY_URL
-    # - change TWINE_USERNAME to __token__ (double underscores)
-    # - change TWINE_PASSWORD to the pypi API token
-    TWINE_USERNAME: "${PRIVATE_PYPI_USERNAME}"
-    TWINE_REPOSITORY_URL: "${PRIVATE_PYPI_URL}"
-    TWINE_PASSWORD: "${PRIVATE_PYPI_PASSWORD}"
+    # Set to use https://pypi.org/
+    TWINE_USERNAME: "__token__"
+    TWINE_PASSWORD: "${PYPI_API_TOKEN}"
   script:
     - python -m pip install -r requirements.txt
     - ./create_models.sh

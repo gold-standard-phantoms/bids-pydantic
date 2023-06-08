@@ -2,10 +2,15 @@
 
 ## Overview
 
-BIDS-pydantic will pull a specified version (from v1.7.0 onwards, tested up to v1.7.0) of the BIDS metadata schema
-which is used in the JSON BIDS sidecar, from the [official BIDS GitHub page](https://github.com/bids-standard/bids-specification/),
-and create corresponding [pydantic](https://pydantic-docs.helpmanual.io/) models, which will provide BIDS data validation using
-python type annotations.
+BIDS-pydantic will pull a specified version (from v1.7.0 onwards, tested up to v1.7.0)
+of the BIDS metadata schema which is used in the JSON BIDS sidecar, from the
+[official BIDS GitHub page](https://github.com/bids-standard/bids-specification/),
+and create corresponding [pydantic](https://pydantic-docs.helpmanual.io/) models, which
+will provide BIDS data validation using python type annotations.
+
+Alternatively, the BIDS-pydantic-models package will only install the models for direct
+use in your Python software.
+More information on the use of the models [can be found here.](./models/README.md)
 
 ## Table of Contents
 
@@ -18,13 +23,25 @@ python type annotations.
 
 ## How To Contribute
 
-Got a great idea for something to implement in BIDS-pydantic, or maybe you have just found a bug?
-[Create an issue](https://github.com/gold-standard-phantoms/bids-pydantic/issues) to get in touch with the development team and we’ll take it from there.
+Got a great idea for something to implement in BIDS-pydantic, or maybe you have just
+found a bug?
+[Create an issue](https://github.com/gold-standard-phantoms/bids-pydantic/issues)
+to get in touch with the development team and we’ll take it from there.
 
 ## Quickstart
 
-If you just want to use the models in your project. Download the pydantic models file for the BIDS schema version you wish to use
-from the [models](models) directory, and add it to your code-base. These files are generated using the `bids-pydantic make -a` command (see below).
+If you just want to use the models in your project. Download the pydantic models file
+for the BIDS schema version you wish to use from the [models](models) directory, and
+add it to your code-base. These files are generated using the `bids-pydantic make -a`
+command (see below).
+
+Alternatively, you can just run:
+
+```sh
+$ pip install bids-pydantic-models
+```
+
+More information on the use of the models [can be found here.](./models/README.md)
 
 If you want to use the command line tool to generate the models, keep reading this README.
 

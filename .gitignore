@@ -73,3 +73,5 @@ output/
 
 # vim config
 .vim/
+
+.mypy_cache/

@@ -83,10 +83,9 @@ def make_commands(args: argparse.Namespace) -> None:
     # If we should output all possible versions of the schema
     if args.output_all is not None:
         logging.info(
-            "Outputting all parsable versions of theBIDS schema as a pydantic model"
+            "Outputting all parsable versions of the BIDS schema as a pydantic model"
         )
         for supported_version in supported_versions:
-
             output_filename = os.path.join(
                 args.output_all,
                 "bids_metadata_" + str(supported_version).replace(".", "_") + ".py",
@@ -202,8 +201,10 @@ def get_schema_version(schema_version: str) -> SchemaVersion:
         sys.exit(1)
     if schema < MIN_SUPPORTED_SCHEMA_VERSION:
         logging.error(
-            "This version of the schema %s cannot be converted. "
-            "Please use %s or greater.",
+            (
+                "This version of the schema %s cannot be converted. "
+                "Please use %s or greater."
+            ),
             schema,
             MIN_SUPPORTED_SCHEMA_VERSION,
         )
@@ -214,8 +215,10 @@ def get_schema_version(schema_version: str) -> SchemaVersion:
         sys.exit(1)
     if schema > MAX_TESTED_SCHEMA_VERSION:
         logging.warning(
-            "Warning - this version % of the schema has "
-            "been untested with this converter.",
+            (
+                "Warning - this version % of the schema has "
+                "been untested with this converter."
+            ),
             schema,
         )
     return schema
