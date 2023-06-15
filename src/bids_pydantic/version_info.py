@@ -12,7 +12,7 @@ SemverType = TypeVar("SemverType", bound="Semver")
 
 @total_ordering
 class Semver(GenericModel, Generic[SemverType]):
-    """A semver represention i.e. vX.Y.Z"""
+    """A semver representation i.e. vX.Y.Z"""
 
     major: NonNegativeInt = Field(...)
     """The major version number"""
@@ -68,7 +68,7 @@ class Semver(GenericModel, Generic[SemverType]):
 
 
 class SchemaVersion(Semver["SchemaVersion"]):
-    """A BIDS schema version represention"""
+    """A BIDS schema version representation"""
 
     def get_schema_url(self) -> str:
         """Return the YAML BIDS schema URL for the schema version"""
