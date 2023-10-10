@@ -185,6 +185,11 @@ def create_models(params: ConvertParams) -> None:
                 yaml_filename,
                 "--output",
                 params.output_filename,
+                "--output-model-type",
+                "pydantic_v2.BaseModel",
+                "--use-annotated",
+                "--enum-field-as-literal",
+                "all",
             ]
         )
         # Add some version information to the generated file
