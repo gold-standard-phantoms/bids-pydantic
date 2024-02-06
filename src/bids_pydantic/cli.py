@@ -216,7 +216,7 @@ def get_schema_version(schema_version: str) -> SchemaVersion:
     if schema > MAX_TESTED_SCHEMA_VERSION:
         logging.warning(
             (
-                "Warning - this version % of the schema has "
+                "Warning - this version %s of the schema has "
                 "been untested with this converter."
             ),
             schema,
